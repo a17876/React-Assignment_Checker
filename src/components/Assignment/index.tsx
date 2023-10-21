@@ -2,17 +2,20 @@ import styles from "./assignment.module.css";
 import { TbTrash } from "react-icons/tb";
 import React from "react";
 import { BsCheckCircleFill } from "react-icons/bs";
+import { format } from "date-fns";
 
 export function Assignment({
   assignmentList,
   setAssignmentList,
   checkedAssignment,
-  setCheckedAssignment
+  setCheckedAssignment,
+
 }: {
   assignmentList: string[];
   checkedAssignment: boolean[];
   setAssignmentList: React.Dispatch<React.SetStateAction<string[]>>;
   setCheckedAssignment: React.Dispatch<React.SetStateAction<boolean[]>>;
+
 }) {
   function handleDeleteAssignment(index: number): void {
     const updatedAssignmentList = [...assignmentList];
@@ -26,17 +29,14 @@ export function Assignment({
   }
 
   function handleCheckAssignment(index: number): void {
-    console.log(index)
     const updatedCheckedAssignment = [...checkedAssignment]; 
-    console.log(updatedCheckedAssignment[index])
-    console.log(!updatedCheckedAssignment[index])
     updatedCheckedAssignment[index] = !updatedCheckedAssignment[index]; 
     setCheckedAssignment(updatedCheckedAssignment);
     }
 
   return (
     <>
-      <p>checked {checkedAssignment[0]}</p>
+    
       {assignmentList.map((assignment, index) => (
         <div className={styles.assignment}>
           <button
