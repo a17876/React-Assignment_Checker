@@ -7,6 +7,7 @@ function App() {
   const [assignmentList, setAssignmentList] = useState<string[]>([]);
   const [checkedAssignment, setCheckedAssignment] = useState<boolean[]>([]);
   const [dueDate, setDueDate] = useState<number>(0);
+  const [dueDateList, setDueDateList] = useState<number[]>([]);
 
 
   return (
@@ -18,6 +19,8 @@ function App() {
         setCheckedAssignment={setCheckedAssignment}
         dueDate={dueDate}
         setDueDate={setDueDate}
+        dueDateList={dueDateList}
+        setDueDateList={setDueDateList}
      
       />
       <Assignments
@@ -27,6 +30,8 @@ function App() {
         setCheckedAssignment={setCheckedAssignment}
         dueDate={dueDate}
         setDueDate={setDueDate}
+        dueDateList={dueDateList}
+        setDueDateList={setDueDateList}
         
       />
     </>

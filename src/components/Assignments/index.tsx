@@ -7,7 +7,9 @@ export function Assignments({
   checkedAssignment,
   setCheckedAssignment,
   dueDate,
-  setDueDate
+  setDueDate,
+  dueDateList,
+  setDueDateList
 }: {
   assignmentList: string[];
   setAssignmentList: React.Dispatch<React.SetStateAction<string[]>>;
@@ -15,6 +17,8 @@ export function Assignments({
   setCheckedAssignment: React.Dispatch<React.SetStateAction<boolean[]>>;
   dueDate: number;
   setDueDate: React.Dispatch<React.SetStateAction<number>>;
+  dueDateList: number[];
+  setDueDateList: React.Dispatch<React.SetStateAction<number[]>>;
 }) {
   const listLength = assignmentList.length;
   const checkListLength = checkedAssignment.length;
@@ -40,6 +44,8 @@ export function Assignments({
           setAssignmentList={setAssignmentList}
           checkedAssignment={checkedAssignment}
           setCheckedAssignment={setCheckedAssignment}
+          dueDateList={dueDateList}
+          setDueDateList={setDueDateList}
         />
       </div>
     </section>

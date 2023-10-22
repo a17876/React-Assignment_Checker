@@ -51,7 +51,7 @@ p.textCompleted {
 .dueDate{
   margin-left: 20px;
   padding: 10px;
-  background-color: grey;
+  background-color: #5e60ce;
   border-radius: 20px;
 }
 .dueTomorrow {

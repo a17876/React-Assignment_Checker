@@ -3,6 +3,8 @@ import { TbTrash } from "react-icons/tb";
 import React from "react";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { format } from "date-fns";
+import { BiAngry } from "react-icons/bi";
+
 
 export function Assignment({
   assignmentList,
@@ -11,6 +13,8 @@ export function Assignment({
   setCheckedAssignment,
   dueDate,
   setDueDate,
+  dueDateList,
+  setDueDateList
 }: {
   assignmentList: string[];
   checkedAssignment: boolean[];
@@ -18,6 +22,8 @@ export function Assignment({
   setCheckedAssignment: React.Dispatch<React.SetStateAction<boolean[]>>;
   dueDate: number;
   setDueDate: React.Dispatch<React.SetStateAction<number>>;
+  dueDateList: number[];
+  setDueDateList: React.Dispatch<React.SetStateAction<number[]>>;
 }) {
   function handleDeleteAssignment(index: number): void {
     const updatedAssignmentList = [...assignmentList];
@@ -27,6 +33,10 @@ export function Assignment({
     const updatedCheckedAssignment = [...checkedAssignment];
     updatedCheckedAssignment.splice(index, 1);
     setCheckedAssignment(updatedCheckedAssignment);
+
+    const updatedDueDate = [...dueDateList];
+    updatedDueDate.splice(index, 1);
+    setDueDateList(updatedDueDate);
   }
 
   function handleCheckAssignment(index: number): void {
@@ -57,12 +67,12 @@ export function Assignment({
             }
           >
             {assignment}
-            {dueDate === 1 ? (
-              <span className={styles.dueTomorrow}>Due: tomorrow</span>
-            ) : dueDate === 0 ? (
+            {dueDateList[index] === 1 ? (
+              <span className={styles.dueTomorrow}>Due: tomorrow <BiAngry /> <BiAngry /></span>
+            ) : dueDateList[index] === 0 ? (
               <span className={styles.dueTomorrow}>Due: today</span>
             ) : (
-              <span className={styles.dueDate}>Due: {dueDate} days</span>
+              <span className={styles.dueDate}>Due: {dueDateList[index]} days</span>
             )}
           </p>
 
