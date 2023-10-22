@@ -34,6 +34,8 @@ export function Assignments({
 
       <div className={styles.list}>
         <Assignment
+          dueDate={dueDate}
+          setDueDate={setDueDate}
           assignmentList={assignmentList}
           setAssignmentList={setAssignmentList}
           checkedAssignment={checkedAssignment}

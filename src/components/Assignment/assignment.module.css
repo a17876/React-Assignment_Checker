@@ -48,7 +48,15 @@ p.textCompleted {
   color: #808080;
 }
 
-/* .lineThrough {
-  color: #808080;
-  text-decoration: line-through;
-} */
+.dueDate{
+  margin-left: 20px;
+  padding: 10px;
+  background-color: grey;
+  border-radius: 20px;
+}
+.dueTomorrow {
+  margin-left: 20px;
+  padding: 10px;
+  background-color: red;
+  border-radius: 20px;
+}
