@@ -1,6 +1,7 @@
 import { DayPicker } from "react-day-picker";
 import { format, differenceInDays,startOfDay  } from "date-fns";
 import "react-day-picker/dist/style.css";
+import styles from "./calendar.module.css";
 
 type SelectSingleEventHandler = (date: Date | undefined) => void;
 
@@ -10,7 +11,9 @@ export default function Calendar({
   dueDate,
   setDueDate,
   isCalendarClicked,
-  setIsCalendarClicked
+  setIsCalendarClicked,
+  showDate,
+  setShowDate
 }: {
   selected: Date | undefined;
   setSelected: React.Dispatch<React.SetStateAction<Date | undefined>>;
@@ -18,13 +21,15 @@ export default function Calendar({
   setDueDate: React.Dispatch<React.SetStateAction<number>>;
   isCalendarClicked: boolean;
   setIsCalendarClicked: React.Dispatch<React.SetStateAction<boolean>>;
+  showDate: Date | undefined;
+  setShowDate: React.Dispatch<React.SetStateAction<Date | undefined>>;
 }) {
   let footer = <p>Please pick a day.</p>;
 
   if (selected) {
     footer = (
       <p>
-        You picked {format(selected, "PP")}. The difference is {dueDate} days.
+        You picked {format(selected, "PP")}.
       </p>
     );
   }
@@ -42,11 +47,13 @@ export default function Calendar({
       setDueDate(0);
     }
     setIsCalendarClicked(false)
+    setShowDate(selected);
   };
 
   return (
     <>
       <DayPicker
+        className={styles.dayPickerContainer}
         mode="single"
         selected={selected}
         onSelect={handleDateSelect}

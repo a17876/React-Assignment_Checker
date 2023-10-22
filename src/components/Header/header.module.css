@@ -68,3 +68,6 @@
   font-size: 250%;
   color: #8284fa;
 }
+.dayPickerContainer{
+  position: relative;
+}

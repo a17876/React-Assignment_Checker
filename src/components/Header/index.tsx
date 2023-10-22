@@ -29,6 +29,7 @@ export function Header({
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [isCalendarClicked, setIsCalendarClicked] = useState(false);
   const [selected, setSelected] = useState<Date | undefined>();
+  const [showDate, setShowDate] = useState<Date>();
 
   const handleCalendar = () => {
     setIsCalendarClicked(!isCalendarClicked);
@@ -50,6 +51,7 @@ export function Header({
       setAssignmentList([...assignmentList, assignment]);
       setCheckedAssignment([...checkedAssignment, false]);
       setDueDateList([...dueDateList, dueDate]);
+      setShowDate(undefined);
     }
   };
 
@@ -65,7 +67,7 @@ export function Header({
           onChange={handleAssignmentChange}
         />
         <div className={styles.calendarContainer}>
-        {selected ? <p className={styles.date}>{format(selected, "MM/dd/yyyy")}</p> : <div />}
+        {showDate ? <p className={styles.date}>{format(showDate, "MM/dd/yyyy")}</p> : <p className={styles.date}>Select Date</p>}
           <AiFillCalendar
             className={isCalendarClicked ? styles.calendar : styles.calendarOff}
             onClick={handleCalendar}
@@ -79,7 +81,8 @@ export function Header({
         </button>
       </form>
 
-      {isCalendarClicked ? (
+      <div className={styles.dayPickerContainer}>
+           {isCalendarClicked ? (
         <Calendar
           selected={selected}
           setSelected={setSelected}
@@ -87,11 +90,13 @@ export function Header({
           setDueDate={setDueDate}
           isCalendarClicked={isCalendarClicked}
           setIsCalendarClicked={setIsCalendarClicked}
+          showDate={showDate}
+          setShowDate={setShowDate}
         />
       ) : (
         <div />
       )}
-      
+      </div>
       
     </header>
   );
