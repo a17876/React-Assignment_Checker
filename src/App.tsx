@@ -6,6 +6,7 @@ import { useState } from "react";
 function App() {
   const [assignmentList, setAssignmentList] = useState<string[]>([]);
   const [checkedAssignment, setCheckedAssignment] = useState<boolean[]>([]);
+  const [dueDate, setDueDate] = useState<number>(0);
 
 
   return (
@@ -15,6 +16,8 @@ function App() {
         setAssignmentList={setAssignmentList}
         checkedAssignment={checkedAssignment}
         setCheckedAssignment={setCheckedAssignment}
+        dueDate={dueDate}
+        setDueDate={setDueDate}
      
       />
       <Assignments
@@ -22,6 +25,8 @@ function App() {
         setAssignmentList={setAssignmentList}
         checkedAssignment={checkedAssignment}
         setCheckedAssignment={setCheckedAssignment}
+        dueDate={dueDate}
+        setDueDate={setDueDate}
         
       />
     </>

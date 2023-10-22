@@ -4,6 +4,7 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { uppercase } from "../../helpers/stringHelpers";
 import { AiFillCalendar } from "react-icons/ai";
 import Calendar from "../Calendar";
+import { format } from "date-fns";
 
 
 export function Header({
@@ -11,17 +12,23 @@ export function Header({
   setAssignmentList,
   checkedAssignment,
   setCheckedAssignment,
- 
+  dueDate,
+  setDueDate
 }: {
   assignmentList: string[];
   setAssignmentList: React.Dispatch<React.SetStateAction<string[]>>;
   checkedAssignment:boolean[];
   setCheckedAssignment:React.Dispatch<React.SetStateAction<boolean[]>>;
+  dueDate: number;
+  setDueDate: React.Dispatch<React.SetStateAction<number>>;
 
 }) {
   const [assignment, setAssignment] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [isCalendarClicked, setIsCalendarClicked] = useState(false);
+  const [selected, setSelected] = useState<Date | undefined>();
+  // const [dueDate, setDueDate] = useState<number>(0);
+  // 현재 날짜와 시간을 포함하는 Date 객체 생성
 
   const handleCalendar = () => {
     setIsCalendarClicked(!isCalendarClicked);
@@ -33,8 +40,8 @@ export function Header({
     setAssignment(newAssignment);
     // Check if the input is empty and update the button's disabled state
     setIsButtonDisabled(newAssignment.trim() === "");
-  };
 
+  };
   
   const handleCreateClick = () => {
     // Handle the creation of the assignment here
@@ -50,6 +57,8 @@ export function Header({
 
   return (
     <header className={styles.header}>
+
+
       <h1>{uppercase("bcit")} Assignment Tracker</h1>
       <form className={styles.newAssignmentForm}>
         <input
@@ -69,7 +78,7 @@ export function Header({
         </button>
       </form>
 
-      {isCalendarClicked ? <Calendar  /> : <div />}
+      {isCalendarClicked ? <Calendar selected={selected} setSelected={setSelected} dueDate={dueDate} setDueDate={setDueDate} /> : <div />}
     </header>
   );
 }

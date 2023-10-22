@@ -5,12 +5,16 @@ export function Assignments({
   assignmentList,
   setAssignmentList,
   checkedAssignment,
-  setCheckedAssignment
+  setCheckedAssignment,
+  dueDate,
+  setDueDate
 }: {
   assignmentList: string[];
   setAssignmentList: React.Dispatch<React.SetStateAction<string[]>>;
   checkedAssignment: boolean[];
   setCheckedAssignment: React.Dispatch<React.SetStateAction<boolean[]>>;
+  dueDate: number;
+  setDueDate: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const listLength = assignmentList.length;
   const checkListLength = checkedAssignment.length;
