@@ -8,11 +8,8 @@ type SelectSingleEventHandler = (date: Date | undefined) => void;
 export default function Calendar({
   selected,
   setSelected,
-  dueDate,
   setDueDate,
-  isCalendarClicked,
   setIsCalendarClicked,
-  showDate,
   setShowDate
 }: {
   selected: Date | undefined;

@@ -2,7 +2,7 @@ import styles from "./assignment.module.css";
 import { TbTrash } from "react-icons/tb";
 import React from "react";
 import { BsCheckCircleFill } from "react-icons/bs";
-import { BiAngry } from "react-icons/bi";
+import { BiAngry, BiRun } from "react-icons/bi";
 
 
 export function Assignment({
@@ -69,9 +69,9 @@ export function Assignment({
             {dueDateList[index] === 1 ? (
               <span className={styles.dueTomorrow}>Due: tomorrow <BiAngry /> <BiAngry /></span>
             ) : dueDateList[index] === 0 ? (
-              <span className={styles.dueTomorrow}>Due: today</span>
+              <span className={styles.dueTomorrow}>Due: today <BiAngry /> <BiAngry /></span>
             ) : (
-              <span className={styles.dueDate}>Due: {dueDateList[index]} days</span>
+              <span className={styles.dueDate}>Due: {dueDateList[index]} days <BiRun /> <BiRun /></span>
             )}
           </p>
 
