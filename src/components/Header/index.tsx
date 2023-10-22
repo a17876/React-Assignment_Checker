@@ -4,7 +4,7 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { uppercase } from "../../helpers/stringHelpers";
 import { AiFillCalendar } from "react-icons/ai";
 import Calendar from "../Calendar";
-
+import { format } from 'date-fns';
 
 export function Header({
   assignmentList,
@@ -32,7 +32,6 @@ export function Header({
 
   const handleCalendar = () => {
     setIsCalendarClicked(!isCalendarClicked);
-    console.log(isCalendarClicked);
   };
 
   const handleAssignmentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,19 +45,18 @@ export function Header({
     // Handle the creation of the assignment here
     if (assignment.trim() !== "") {
       // Create the assignment or update your state as needed
-      console.log("Creating assignment:", assignment);
       setAssignment("");
       setIsButtonDisabled(true);
       setAssignmentList([...assignmentList, assignment]);
       setCheckedAssignment([...checkedAssignment, false]);
       setDueDateList([...dueDateList, dueDate]);
-      console.log("due date:", dueDateList);
     }
   };
 
   return (
     <header className={styles.header}>
       <h1>{uppercase("bcit")} Assignment Tracker</h1>
+     
       <form className={styles.newAssignmentForm}>
         <input
           placeholder="Add a new assignment"
@@ -67,6 +65,7 @@ export function Header({
           onChange={handleAssignmentChange}
         />
         <div className={styles.calendarContainer}>
+        {selected ? <p className={styles.date}>{format(selected, "MM/dd/yyyy")}</p> : <div />}
           <AiFillCalendar
             className={isCalendarClicked ? styles.calendar : styles.calendarOff}
             onClick={handleCalendar}
@@ -86,10 +85,14 @@ export function Header({
           setSelected={setSelected}
           dueDate={dueDate}
           setDueDate={setDueDate}
+          isCalendarClicked={isCalendarClicked}
+          setIsCalendarClicked={setIsCalendarClicked}
         />
       ) : (
         <div />
       )}
+      
+      
     </header>
   );
 }

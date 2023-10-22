@@ -23,6 +23,7 @@ function App() {
         setDueDateList={setDueDateList}
      
       />
+      
       <Assignments
         assignmentList={assignmentList}
         setAssignmentList={setAssignmentList}

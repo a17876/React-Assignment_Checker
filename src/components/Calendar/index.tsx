@@ -9,11 +9,15 @@ export default function Calendar({
   setSelected,
   dueDate,
   setDueDate,
+  isCalendarClicked,
+  setIsCalendarClicked
 }: {
   selected: Date | undefined;
   setSelected: React.Dispatch<React.SetStateAction<Date | undefined>>;
   dueDate: number;
   setDueDate: React.Dispatch<React.SetStateAction<number>>;
+  isCalendarClicked: boolean;
+  setIsCalendarClicked: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   let footer = <p>Please pick a day.</p>;
 
@@ -37,6 +41,7 @@ export default function Calendar({
       // If no date is selected, clear the dueDate
       setDueDate(0);
     }
+    setIsCalendarClicked(false)
   };
 
   return (

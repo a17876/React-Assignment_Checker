@@ -21,7 +21,8 @@ export function Assignments({
   setDueDateList: React.Dispatch<React.SetStateAction<number[]>>;
 }) {
   const listLength = assignmentList.length;
-  const checkListLength = checkedAssignment.length;
+  const checkListLength = checkedAssignment.filter(value => value === true).length;
+  console.log(`checkedlist ${checkListLength}`)
   return (
     <section className={styles.assignments}>
       <header className={styles.header}>
